@@ -46,166 +46,180 @@ const ProductCreateContent = () => {
 
   return (
     <>
-      <div id="page-content-wrapper">
-        <div className="container" style={{ maxWidth: 1632 }}>
-          <div className="row">
-            <div
-              className="col-md-12  p-4 py-5"
-              style={{ backgroundColor: "#F5F5F5" }}
-            >
-              <div
-                className="ml-4 border"
-                style={{
-                  background: "#fff",
-                  borderRadius: 4,
-                  marginBottom: 140,
-                }}
-              >
-                <div className="row py-4 border-bottom ">
-                  <div className="col-md-12 pl-5">
-                    <h4 className="font-weight-bold">Sell Product</h4>
-                  </div>
-                </div>
-                <form onSubmit={handleSubmit}>
-                  <div className="row ">
-                    <div className="col-md-6">
-                      <div className="row py-1">
-                        <p />
-                      </div>
-                      <div className="row  py-1 mt-1">
-                        <div className="col-md-3 col-3">
-                          <p className="text-right" style={{ paddingTop: 13 }}>
-                            Name
-                          </p>
-                        </div>
-                        <div className="col-md-9 col-9 pl-0  mb-5">
-                          <input
-                            type="text"
-                            className="form-input container-fluid"
-                            placeholder="Name Product"
-                            name="name_product"
-                            value={product.name_product}
-                            onChange={handleChange}
-                          />
-                        </div>
-                        <div className="col-md-3 col-3">
-                          <p className="text-right" style={{ paddingTop: 13 }}>
-                            Category
-                          </p>
-                        </div>
-                        <div className="col-md-9 col-9 pl-0  mb-5">
-                          <select
-                            class="form-control"
-                            id="exampleFormControlSelect1"
-                            name="id_category"
-                            value={product.id_category}
-                            onChange={handleChange}
-                          >
-                            <option name="id_category" value={1}>
-                              T-Shirt
-                            </option>
-                            <option name="id_category" value={2}>
-                              Pants
-                            </option>
-                            <option name="id_category" value={3}>
-                              Hoodie
-                            </option>
-                            <option name="id_category" value={4}>
-                              Parka
-                            </option>
-                            <option name="id_category" value={5}>
-                              Longsleeve
-                            </option>
-                            <option name="id_category" value={6}>
-                              Varsity
-                            </option>
-                            <option name="id_category" value={7}>
-                              Sweatshirt
-                            </option>
-                          </select>
-                        </div>
-                        <div className="col-md-3 col-3">
-                          <p className="text-right" style={{ paddingTop: 13 }}>
-                            Price
-                          </p>
-                        </div>
-                        <div className="col-md-9 col-9 pl-0  mb-5">
-                          <input
-                            type="text"
-                            className="form-input container-fluid"
-                            name="price_product"
-                            placeholder="Price Product"
-                            value={product.price_product}
-                            onChange={handleChange}
-                          />
-                        </div>
-                        <div className="col-md-3 col-3">
-                          <p className="text-right" style={{ paddingTop: 13 }}>
-                            Stock
-                          </p>
-                        </div>
-                        <div className="col-md-9 col-9 pl-0  mb-5">
-                          <input
-                            type="text"
-                            className="form-input container-fluid"
-                            name="stock_product"
-                            placeholder="Stock Product"
-                            value={product.stock_product}
-                            onChange={handleChange}
-                          />
-                        </div>
-                        <div className="col-md-3 col-3">
-                          <p className="text-right" style={{ paddingTop: 13 }}>
-                            Image
-                          </p>
-                        </div>
-                        <div className="col-md-9 col-9 pl-0  mb-5">
-                          <input
-                            type="file"
-                            className="form-input container-fluid"
-                            placeholder=""
-                            name="image_product"
-                            onChange={handleUpload}
-                          />
-                        </div>
-                        <div className="col-md-3 col-3">
-                          <p className="text-right" style={{ paddingTop: 13 }}>
-                            Description
-                          </p>
-                        </div>
-                        <div className="col-md-9 col-9 pl-0  mb-5">
-                          <input
-                            type="text"
-                            className="form-input container-fluid"
-                            name="description_product"
-                            placeholder="Description Product"
-                            value={product.description_product}
-                            onChange={handleChange}
-                          />
-                        </div>
-                        <div className="col-md-3 col-3">
-                          <p
-                            className="text-right"
-                            style={{ paddingTop: 13 }}
-                          />
-                        </div>
-                        <div className="col-md-9 col-9 pl-0  mb-5">
-                          <button
-                            type="submit"
-                            className="btn btn-danger rounded-pill btn-cm"
-                          >
-                            Save
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
+      <div
+        className="col-md-8 col-12 vhhpx"
+        style={{
+          backgroundColor: "#F5F5F5",
+          marginLeft: "right",
+        }}
+      >
+        <form onSubmit={handleSubmit}>
+          <div
+            className="col-md-12 border container-fluid"
+            style={{
+              marginTop: 124,
+              backgroundColor: "#FFF",
+              borderRadius: 4,
+              border: "1px solid #9B9B9B",
+            }}
+          >
+            <div className=" col-md-12 border-bottom mt-3 p-0">
+              <h4 className="font-weight-bold pt-2">Inventory</h4>
+            </div>
+            <div className=" col-md-6 mt-3 p-0 mb-4">
+              <p>Name of goods</p>
+              <input
+                type="text"
+                className="form-control"
+                style={{ height: 48 }}
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-lg"
+                name="name_product"
+                value={product.name_product}
+                onChange={handleChange}
+                placeholder=""
+              />
             </div>
           </div>
-        </div>
+          <div
+            className="col-md-12 border container-fluid"
+            style={{
+              marginTop: 30,
+              backgroundColor: "#FFF",
+              borderRadius: 4,
+              border: "1px solid #9B9B9B",
+            }}
+          >
+            <div className=" col-md-12 border-bottom mt-3 p-0">
+              <h4 className="font-weight-bold pt-2">Item details</h4>
+            </div>
+            <div className=" col-md-6 mt-3 p-0 mb-4">
+              <p>Unit price</p>
+              <input
+                type="text"
+                className="form-control"
+                style={{ height: 48 }}
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-lg"
+                placeholder=""
+                name="price_product"
+                value={product.price_product}
+                onChange={handleChange}
+              />
+            </div>
+            <div className=" col-md-6 mt-3 p-0 mb-4">
+              <p>Stock</p>
+              <input
+                type="text"
+                className="form-control"
+                style={{ height: 48 }}
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-lg"
+                placeholder=""
+                name="stock_product"
+                value={product.stock_product}
+                onChange={handleChange}
+              />
+            </div>
+            <div className=" col-md-6 mt-3 p-0 mb-4">
+              <p>Category</p>
+              <select
+                class="form-control"
+                style={{ height: 48 }}
+                id="exampleFormControlSelect1"
+                name="id_category"
+                value={product.id_category}
+                onChange={handleChange}
+              >
+                <option name="id_category" value={1}>
+                  T-Shirt
+                </option>
+                <option name="id_category" value={2}>
+                  Pants
+                </option>
+                <option name="id_category" value={3}>
+                  Hoodie
+                </option>
+                <option name="id_category" value={4}>
+                  Parka
+                </option>
+                <option name="id_category" value={5}>
+                  Longsleeve
+                </option>
+                <option name="id_category" value={6}>
+                  Varsity
+                </option>
+                <option name="id_category" value={7}>
+                  Sweatshirt
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            className="col-md-12 border container-fluid"
+            style={{
+              marginTop: 30,
+              backgroundColor: "#FFF",
+              borderRadius: 4,
+              border: "1px solid #9B9B9B",
+            }}
+          >
+            <div className=" col-md-12 border-bottom mt-3 p-0">
+              <h4 className="font-weight-bold pt-2">Photo of goods</h4>
+            </div>
+            <div className=" col-md-6 mt-3 p-0 mb-4">
+              <input
+                type="file"
+                className="form-control"
+                style={{ height: 48 }}
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-lg"
+                name="image_product"
+                onChange={handleUpload}
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div
+            className="col-md-12 border container-fluid"
+            style={{
+              marginTop: 30,
+              backgroundColor: "#FFF",
+              borderRadius: 4,
+              border: "1px solid #9B9B9B",
+            }}
+          >
+            <div className=" col-md-12 border-bottom mt-3 p-0">
+              <h4 className="font-weight-bold pt-2">Descriptions</h4>
+            </div>
+            <div className=" col-md-12 mt-3 p-0 mb-4">
+              <input
+                type="text"
+                className="form-control"
+                style={{ height: 316 }}
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-lg"
+                name="description_product"
+                value={product.description_product}
+                onChange={handleChange}
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div className="col-md-12 mb-4 text-right" style={{ marginTop: 30 }}>
+            <button
+              type="submit"
+              className="btn btn-danger rounded-pill btn-cm"
+            >
+              Sell
+            </button>
+          </div>
+        </form>
       </div>
+      <div
+        className="col-md-1 vhhpx"
+        style={{ backgroundColor: "#F5F5F5" }}
+      ></div>
     </>
   );
 };

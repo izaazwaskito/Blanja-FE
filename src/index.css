@@ -654,3 +654,33 @@
   border: 1px solid #c7c4c4;
   margin-right: 10px;
 }
+
+.vhhp{
+  height: 100vh;
+}
+.vhhx{
+  height: 100vh;
+}
+.vhhy{
+  height: 75vh;
+}
+.vhhpx{
+  height: 155vh;
+}
+
+/* ============================================== */
+
+@media only screen and (max-width: 500px) {
+.vhhp{
+  height: 0vh;
+}
+.vhhx{
+  height: 35vh;
+}
+.vhhy{
+  height: 95vh;
+}
+.vhhpx{
+  height: 0vh;
+}
+}

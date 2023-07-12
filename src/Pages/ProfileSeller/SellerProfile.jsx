@@ -1,18 +1,18 @@
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
+import NavbarSeller from "../../components/NavbarSeller/NavbarSeller";
 import SidebarSeller from "../../components/SidebarSeller/SidebarSeller";
 import SellerProfilContent from "./Content/SellerProfilContent";
 const SellerProfile = () => {
   return (
     <>
-      <NavbarLogin />
-      <main className="metropolis">
+      <NavbarSeller />
+      <main>
         <section>
-          <p style={{ marginTop: 40 }} />
+          <div className="row m-0 metropolis">
+            <SidebarSeller />
+            <SellerProfilContent />
+          </div>
         </section>
-        <div id="wrapper">
-          <SidebarSeller />
-          <SellerProfilContent />
-        </div>
       </main>
     </>
   );

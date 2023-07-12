@@ -5,9 +5,12 @@ import ModalUpdate from "../../components/ModalUpdate/modalUpdate";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import Sidebar from "../../components/SidebarSeller/SidebarSeller";
 import ProductListContent from "./Content/ProductListContent";
+import NavbarSeller from "../../components/NavbarSeller/NavbarSeller";
+import SidebarSeller from "../../components/SidebarSeller/SidebarSeller";
 
 const SellerProductList = () => {
   let [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     axios
@@ -18,18 +21,15 @@ const SellerProductList = () => {
 
   return (
     <>
-      <>
-        <NavbarLogin />
-        <main className="metropolis">
-          <section>
-            <p style={{ marginTop: 40 }} />
-          </section>
-          <div id="wrapper">
-            <Sidebar />
+      <NavbarSeller />
+      <main>
+        <section>
+          <div className="row m-0 metropolis">
+            <SidebarSeller />
             <ProductListContent />
           </div>
-        </main>
-      </>
+        </section>
+      </main>
     </>
   );
 };
