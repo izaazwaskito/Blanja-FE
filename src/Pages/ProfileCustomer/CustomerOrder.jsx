@@ -5,16 +5,17 @@ import OrderContent from "./Content/OrderContent";
 const CustomerOrder = () => {
   return (
     <>
-      <NavbarLogin />
-      <main>
-        <section>
-          <p style={{ marginTop: 40 }} />
-        </section>
-        <div id="wrapper">
-          <SidebarCustomer />
-          <OrderContent />
-        </div>
-      </main>
+      <>
+        <NavbarLogin />
+        <main>
+          <section>
+            <div className="row m-0 metropolis">
+              <SidebarCustomer />
+              <OrderContent />
+            </div>
+          </section>
+        </main>
+      </>
     </>
   );
 };

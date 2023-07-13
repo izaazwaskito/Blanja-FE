@@ -12,10 +12,10 @@ const NavbarLogin = () => {
   });
   return (
     <>
-      <header className="metropolis">
-        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-          <div className="container" style={{ maxWidth: 1632 }}>
-            <Link to={"/"}>
+      <header>
+        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light pb-3">
+          <div className="container metropolis" style={{ maxWidth: 1610 }}>
+            <a href="./index.html">
               <img
                 src={require("../../assets/img/logo.png")}
                 alt="logo"
@@ -25,7 +25,7 @@ const NavbarLogin = () => {
                   marginRight: "auto",
                 }}
               />
-            </Link>
+            </a>
             <button
               className="navbar-toggler"
               type="button"
@@ -39,14 +39,13 @@ const NavbarLogin = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li className="nav-item ml-2 form-inline row justify-content-center">
+                <li className="nav-item ml-5 form-inline row justify-content-center">
                   <input
                     id="searchbox"
                     className="form-control mr-sm-2 mt-1"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                    onChange={(e) => setSearch(e.target.value)}
                   />
                   <img
                     className="searchLogo"
@@ -55,51 +54,43 @@ const NavbarLogin = () => {
                   />
                   <img
                     id="homeFilter"
-                    className="mr-4"
+                    className="mr-4 border p-2"
                     src={require("../../assets/img/filter.png")}
                     alt="filter"
                     data-toggle="modal"
                     data-target="#exampleModal"
+                    style={{ borderRadius: 10 }}
                   />
                 </li>
               </ul>
               <form className="form-inline my-2 my-lg-0">
-                <Link to={"/bag"}>
+                <a href="/pages/mybag.html">
                   <img
                     style={{ marginRight: 40 }}
                     src={require("../../assets/img/cart.png")}
                     alt="cart"
                   />
-                </Link>
+                </a>
                 <img
                   style={{ marginRight: 40 }}
                   src={require("../../assets/img/bell.png")}
                   alt="bell"
                 />
-
-                <img
-                  style={{ marginRight: 40 }}
-                  src={require("../../assets/img/mail.png")}
-                  alt="mail"
-                />
-
-                <Link to={"/customer/profile"}>
+                <a href="/pages/chatv1.html">
+                  <img
+                    style={{ marginRight: 40 }}
+                    src={require("../../assets/img/mail.png")}
+                    alt="mail"
+                  />
+                </a>
+                <a href="/pages/profile-account.html">
                   <img
                     className="mr-4"
                     src={require("../../assets/img/user.png")}
                     alt="cart"
                     style={{ borderRadius: "50%", width: 30 }}
                   />
-                </Link>
-                <button
-                  className="btn btn-danger rounded-pill mr-2 ml-3"
-                  style={{ backgroundColor: "#DB3022" }}
-                  onClick={() => {
-                    localStorage.removeItem("token_user");
-                  }}
-                >
-                  LogOut
-                </button>
+                </a>
               </form>
             </div>
           </div>

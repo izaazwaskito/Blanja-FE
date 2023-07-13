@@ -5,16 +5,17 @@ import ProfileContent from "./Content/ProfileContent";
 const CustomerProfile = () => {
   return (
     <>
-      <NavbarLogin />
-      <main>
-        <section>
-          <p style={{ marginTop: 40 }} />
-        </section>
-        <div id="wrapper">
-          <SidebarCustomer />
-          <ProfileContent />
-        </div>
-      </main>
+      <>
+        <NavbarLogin />
+        <main>
+          <section>
+            <div className="row m-0 metropolis">
+              <SidebarCustomer />
+              <ProfileContent />
+            </div>
+          </section>
+        </main>
+      </>
     </>
   );
 };

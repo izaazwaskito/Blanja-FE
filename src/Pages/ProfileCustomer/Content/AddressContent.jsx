@@ -1,234 +1,99 @@
-import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import ModalUpdateAddress from "../../../components/ModalAddress/ModalUpdateAddress";
 
 const AddressContent = () => {
+  let [addresss, setAddresss] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND}/address`)
+      .then((response) => setAddresss(response.data.data))
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <>
       <div
-        id="page-content-wrapper"
-        style={{ maxWidth: 1632 }}
-        className="metropolis"
+        className="col-md-8 col-12 vhhp"
+        style={{ backgroundColor: "#F5F5F5", marginLeft: "right" }}
       >
-        <div className="container" style={{ maxWidth: 1632 }}>
-          <div className="row">
-            <div
-              className="col-md-12  p-4 py-5"
-              style={{ background: "#F5F5F5" }}
-            >
-              <div
-                className="ml-4 border"
+        <div
+          className="col-md-12 border container-fluid vhhy"
+          style={{
+            marginTop: 124,
+            backgroundColor: "#FFF",
+            borderRadius: 4,
+            border: "1px solid #9B9B9B",
+          }}
+        >
+          <div className=" col-md-12 border-bottom mt-3 ">
+            <h4 className="font-weight-bold pt-2">Choose another address</h4>
+            <p>Manage your shipping address</p>
+          </div>
+          <div className="col-md-12 mt-5">
+            <div className="row">
+              <button
+                type="button"
+                className="btn btn-primary btn-modal container-fluid p-3"
+                data-toggle="modal"
+                data-target="#addressModal"
                 style={{
-                  background: "#fff",
-                  borderRadius: 4,
-                  marginBottom: 140,
+                  backgroundColor: "transparent",
+                  color: "#9B9B9B",
+                  border: "1px dashed",
                 }}
               >
-                <div className="row py-4 border-bottom ">
-                  <div className="col-md-12 pl-5">
-                    <h4 className="font-weight-bold">Choose another address</h4>
-                    <p>Manage your shipping address</p>
-                  </div>
-                </div>
-                <div className="row ">
-                  <div className="col-md-12">
-                    <div className="row py-1">
-                      <div className="row container-fluid">
-                        <div className="col-md-1" />
-                        <div className="col-md-12 mt-4">
-                          {/* Button trigger modal */}
-                          <div className="row mt-4">
-                            <div className="col-md-1" />
-                            <button
-                              type="button"
-                              className="btn btn-primary btn-modal btn-modal-ea ml-1 col-md-10"
-                              data-toggle="modal"
-                              data-target="#exampleModal"
-                            >
-                              Add New Address
-                            </button>
-                            <div className="col-md-1" />
-                          </div>
-                          <div
-                            className="modal fade"
-                            id="exampleModal"
-                            tabIndex={-1}
-                            aria-labelledby="exampleModalLabel"
-                            aria-hidden="true"
-                          >
-                            <div className="modal-dialog modal-lg">
-                              <div className="modal-content">
-                                <div className="modal-header">
-                                  <h5
-                                    className="modal-title"
-                                    id="exampleModalLabel"
-                                  >
-                                    Add new address
-                                  </h5>
-                                  <button
-                                    type="button"
-                                    className="close"
-                                    data-dismiss="modal"
-                                    aria-label="Close"
-                                  >
-                                    <span aria-hidden="true">×</span>
-                                  </button>
-                                </div>
-                                <div className="modal-body">
-                                  <div className="row">
-                                    <div className="col-md-1" />
-                                    <div className="col-md-10">
-                                      <div className="form-group">
-                                        <p className="form-font">
-                                          Save address as (ex : home address,
-                                          office address)
-                                        </p>
-                                        <input
-                                          type="text"
-                                          className="form-control"
-                                          id="formGroupExampleInput2"
-                                          placeholder="Rumah"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="col-md-1" />
-                                  </div>
-                                  <div className="row">
-                                    <div className="col-md-1" />
-                                    <div className="col-md-5">
-                                      <div className="form-group">
-                                        <p className="form-font">
-                                          Recipient’s name
-                                        </p>
-                                        <input
-                                          type="text"
-                                          className="form-control"
-                                          id="formGroupExampleInput2"
-                                          placeholder=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="col-md-5">
-                                      <div className="form-group">
-                                        <p className="form-font">
-                                          Recipient's telephone number
-                                        </p>
-                                        <input
-                                          type="text"
-                                          className="form-control"
-                                          id="formGroupExampleInput2"
-                                          placeholder=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="col-md-1" />
-                                  </div>
-                                  <div className="row">
-                                    <div className="col-md-1" />
-                                    <div className="col-md-5">
-                                      <div className="form-group">
-                                        <p className="form-font">Address</p>
-                                        <input
-                                          type="text"
-                                          className="form-control"
-                                          id="formGroupExampleInput2"
-                                          placeholder=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="col-md-5">
-                                      <div className="form-group">
-                                        <p sclass="form-font">Postal code</p>
-                                        <input
-                                          type="text"
-                                          className="form-control"
-                                          id="formGroupExampleInput2"
-                                          placeholder=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="col-md-1" />
-                                  </div>
-                                  <div className="row">
-                                    <div className="col-md-1" />
-                                    <div className="col-md-5">
-                                      <div className="form-group">
-                                        <p className="form-font">
-                                          City or Subdistrict
-                                        </p>
-                                        <input
-                                          type="text"
-                                          className="form-control"
-                                          id="formGroupExampleInput2"
-                                          placeholder=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="col-md-1" />
-                                  </div>
-                                </div>
-                                <div className="modal-footer">
-                                  <button
-                                    type="button"
-                                    className="btn border rounded-pill"
-                                    data-dismiss="modal"
-                                  >
-                                    Cancel
-                                  </button>
-                                  <button
-                                    type="button"
-                                    className="btn rounded-pill btn-danger"
-                                  >
-                                    Save
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-1" />
-                      </div>
-                      <div className="row mt-4 container-fluid">
-                        <div className="col-md-1" />
-                        <div
-                          className="col-md-10  col-11 mb-2"
-                          style={{
-                            border: "1px solid #DB3022",
-                            borderRadius: 4,
-                          }}
-                        >
-                          <p
-                            style={{ fontWeight: "bold", color: "black" }}
-                            className="mt-2"
-                          >
-                            Andreas Jane
-                          </p>
-                          <p style={{ color: "black" }}>
-                            Perumahan Sapphire Mediterania, Wiradadi, Kec.
-                            Sokaraja, Kabupaten Banyumas, Jawa Tengah, 53181
-                            [Tokopedia Note: blok c 16] Sokaraja, Kab. Banyumas,
-                            53181
-                          </p>
-                          <p
-                            style={{
-                              color: "#DB3022",
-                              fontWeight: "bold",
-                            }}
-                          >
-                            Change address
-                          </p>
-                        </div>
-                        <div className="col-md-1" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-12">
-                    <div style={{ marginBottom: 200 }} />
-                  </div>
+                Add New Address
+              </button>
+            </div>
+          </div>
+          {addresss.map((item) => (
+            <div className="col-md-12 mt-5">
+              <div
+                className="row"
+                style={{ borderRadius: 4, border: "1px solid red" }}
+              >
+                <div className="col-md-12">
+                  <p
+                    style={{ fontWeight: "bold", color: "black" }}
+                    className="mt-2 mb-1"
+                  >
+                    {item.place_address}
+                  </p>
+                  <p
+                    style={{ fontWeight: "bold", color: "black" }}
+                    className="mb-0"
+                  >
+                    {item.name_address}
+                  </p>
+                  <p style={{ color: "black" }} className="mb-0">
+                    {" "}
+                    {item.phone_address}
+                  </p>
+                  <p style={{ color: "black" }} className="mb-1">
+                    {" "}
+                    {item.street_address} {item.postal_address}{" "}
+                    {item.city_address}
+                  </p>
+                  <ModalUpdateAddress
+                    id_address={item.id_address}
+                    name_address={item.name_address}
+                    place_address={item.place_address}
+                    phone_address={item.phone_address}
+                    street_address={item.street_address}
+                    postal_address={item.postal_address}
+                    city_address={item.city_address}
+                  />
                 </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
+      <div
+        className="col-md-1 vhhp"
+        style={{ backgroundColor: "#F5F5F5" }}
+      ></div>
     </>
   );
 };
