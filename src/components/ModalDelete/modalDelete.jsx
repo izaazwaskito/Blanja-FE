@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Swal from "sweetalert2";
 
 const ModalDelete = ({
   id_product,
@@ -22,6 +23,7 @@ const ModalDelete = ({
       .delete("http://localhost:3000/product/" + id_product)
       .then((response) => {
         handleClose();
+        Swal.fire("Delete Success!", "", "success");
         window.location.reload();
       })
       .catch((error) => console.log(error));

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const ModalCreateAddress = () => {
   let [address, setAddress] = useState({
@@ -24,11 +25,17 @@ const ModalCreateAddress = () => {
       .post(`${process.env.REACT_APP_BACKEND}/address`, address)
       .then((res) => {
         alert("succesful register");
-        window.location.reload();
+        Swal.fire({
+          title: "New Addres Added",
+          text: "New address have been added",
+          icon: "success",
+        });
+        setTimeout(function () {
+          window.location.reload(1);
+        }, 2000);
       })
       .catch((err) => {
         console.log(err.response);
-        alert("gagal register");
       });
   };
   return (

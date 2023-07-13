@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch } from "react-redux";
+import updateProductActions from "../../config/redux/actions/updateProductActions";
 
 const ModalUpdate = ({
   id_product,
@@ -12,6 +14,7 @@ const ModalUpdate = ({
   stock_product,
   image_product,
 }) => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [file, setFile] = useState("");
@@ -41,21 +44,7 @@ const ModalUpdate = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name_product", product.name_product);
-    formData.append("id_category", product.id_category);
-    formData.append("stock_product", product.stock_product);
-    formData.append("price_product", product.price_product);
-    formData.append("image_product", file);
-    formData.append("description_product", product.description_product);
-    axios
-      .put("http://localhost:3000/product/" + id_product, formData)
-      .then((response) => {
-        setProducts(response.data);
-        handleClose();
-        window.location.reload();
-      })
-      .catch((error) => console.log(error));
+    dispatch(updateProductActions(id_product, product, file, handleClose));
   };
 
   return (

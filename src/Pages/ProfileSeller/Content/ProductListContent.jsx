@@ -2,17 +2,43 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ModalDelete from "../../../components/ModalDelete/modalDelete";
 import ModalUpdate from "../../../components/ModalUpdate/modalUpdate";
+import { useDispatch, useSelector } from "react-redux";
+import getProductAction from "../../../config/redux/actions/getProductActions";
+import Swal from "sweetalert2";
 
 const ProductListContent = () => {
-  let [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-
+  const { product } = useSelector((state) => state.product);
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND}/product`)
-      .then((response) => setProducts(response.data.data))
-      .catch((error) => console.log(error));
+    dispatch(getProductAction());
   }, []);
+
+  const handleDelete = (id_product) => {
+    Swal.fire({
+      title: "Are you sure you want to delete this item?",
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      icon: "warning",
+      iconColor: "#DB3022",
+      denyButtonText: "No",
+      customClass: {
+        actions: "my-actions",
+        confirmButton: "order-1",
+        denyButton: "order-2",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete("http://localhost:3000/product/" + id_product);
+        Swal.fire("Deleted!", "", "success");
+        setTimeout(function () {
+          window.location.reload(1);
+        }, 2000);
+      } else if (result.isDenied) {
+        Swal.fire("Delete Cancel", "", "info");
+      }
+    });
+  };
 
   return (
     <>
@@ -70,7 +96,7 @@ const ProductListContent = () => {
               <div className="col-md-1 col-3 p-3">Stock</div>
               <div className="col-md-2 col-6 p-3">Action</div>
             </div>
-            {products
+            {product
               .filter((item) => {
                 return search.toLowerCase() === ""
                   ? item
@@ -94,7 +120,12 @@ const ProductListContent = () => {
                       image_product={item.image_product}
                     />
                     <span> </span>
-                    <ModalDelete id_product={item.id_product} />
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(item.id_product)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               ))}

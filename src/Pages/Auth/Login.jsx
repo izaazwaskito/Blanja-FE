@@ -22,6 +22,7 @@ const Login = () => {
         alert("Succesful Login");
         console.log(login.role_user);
         localStorage.setItem("token_user", res.data.data.token_user);
+        localStorage.setItem("role_user", res.data.data.role_user);
         navigate("/");
       })
       .catch((err) => {

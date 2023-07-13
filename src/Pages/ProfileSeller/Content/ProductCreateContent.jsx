@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import createProductAction from "../../../config/redux/actions/createProductActions";
 
 const ProductCreateContent = () => {
+  const dispatch = useDispatch();
   let [photo, setPhoto] = useState(null);
   let [product, setProduct] = useState({
     name_product: "",
@@ -24,24 +27,7 @@ const ProductCreateContent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name_product", product.name_product);
-    formData.append("id_category", product.id_category);
-    formData.append("stock_product", product.stock_product);
-    formData.append("price_product", product.price_product);
-    formData.append("image_product", photo);
-    formData.append("description_product", product.description_product);
-    axios
-      .post(`${process.env.REACT_APP_BACKEND}/product`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        alert("product created");
-        window.location.reload();
-      })
-      .catch((error) => console.log(error));
+    dispatch(createProductAction(product, photo));
   };
 
   return (

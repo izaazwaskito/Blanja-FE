@@ -68,7 +68,7 @@ const Signup = () => {
                   >
                     <input
                       type="radio"
-                      name="options"
+                      name="role_user"
                       id="option1"
                       autoComplete="off"
                       defaultChecked=""
@@ -85,7 +85,7 @@ const Signup = () => {
                   >
                     <input
                       type="radio"
-                      name="options"
+                      name="role_user"
                       id="option2"
                       autoComplete="off"
                       value={"customer"}

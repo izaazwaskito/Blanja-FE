@@ -10,7 +10,7 @@ import DetailPage from "../../Pages/DetailProduct/DetailPage";
 import CustomerProfile from "../../Pages/ProfileCustomer/CustomerProfile";
 import CustomerAddress from "../../Pages/ProfileCustomer/CustomerAddress";
 import CustomerOrder from "../../Pages/ProfileCustomer/CustomerOrder";
-import HomeLogin from "../../Pages/Test";
+import HomeLogin from "../../Pages/Test/Test";
 import MyBag from "../../Pages/Checkout/MyBag";
 import MyCheckout from "../../Pages/Checkout/MyCheckout";
 import ForgetPassword from "../../Pages/Auth/ForgetPassword/ForgetPassword";

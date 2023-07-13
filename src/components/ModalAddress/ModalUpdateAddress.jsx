@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Swal from "sweetalert2";
 
 const ModalUpdateAddress = ({
   id_address,
@@ -39,7 +40,15 @@ const ModalUpdateAddress = ({
       .then((response) => {
         setAddresss(response.data);
         handleClose();
-        window.location.reload();
+        Swal.fire({
+          title: "Address Updated",
+          text: "",
+          icon: "success",
+        });
+
+        setTimeout(function () {
+          window.location.reload(1);
+        }, 2000);
       })
       .catch((error) => console.log(error));
   };

@@ -44,7 +44,7 @@ const Card = () => {
                         <img
                           src={item.image_product}
                           crossOrigin="anonymous"
-                          style={{ width: 150 }}
+                          style={{ height: 185, width: 150 }}
                         />
                         <div className="p-2">
                           <h5
