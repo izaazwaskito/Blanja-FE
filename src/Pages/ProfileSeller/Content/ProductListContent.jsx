@@ -5,14 +5,15 @@ import ModalUpdate from "../../../components/ModalUpdate/modalUpdate";
 import { useDispatch, useSelector } from "react-redux";
 import getProductAction from "../../../config/redux/actions/getProductActions";
 import Swal from "sweetalert2";
+import DataTable from "react-data-table-component";
 
 const ProductListContent = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-  const { product } = useSelector((state) => state.product);
-  useEffect(() => {
-    dispatch(getProductAction());
-  }, []);
+  // const { product } = useSelector((state) => state.product);
+  // useEffect(() => {
+  //   dispatch(getProductAction());
+  // }, []);
 
   const handleDelete = (id_product) => {
     Swal.fire({
@@ -39,6 +40,63 @@ const ProductListContent = () => {
       }
     });
   };
+
+  const columns = [
+    {
+      name: "Name",
+      selector: (row) => row.name_product,
+      sortable: true,
+    },
+    {
+      name: "Stock",
+      selector: (row) => row.stock_product,
+      sortable: true,
+    },
+    {
+      name: "Price",
+      selector: (row) => row.price_product,
+      sortable: true,
+    },
+    {
+      name: "Update",
+      cell: (row) => (
+        <ModalUpdate
+          id_product={row.id_product}
+          name_product={row.name_product}
+          id_category={row.id_category}
+          price_product={row.price_product}
+          stock_product={row.stock_product}
+          description_product={row.description_product}
+          image_product={row.image_product}
+        />
+      ),
+      sortable: true,
+    },
+    {
+      name: "Delete",
+      cell: (row) => (
+        <button
+          className="btn btn-danger"
+          onClick={() => handleDelete(row.id_product)}
+        >
+          Delete
+        </button>
+      ),
+      sortable: true,
+    },
+  ];
+  const [products, setProducts] = useState([]);
+  const endpoint = "http://localhost:3000/product";
+  const getData = async () => {
+    await axios.get(endpoint).then((response) => {
+      const data = response.data.data;
+      setProducts(data);
+    });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
@@ -77,7 +135,7 @@ const ProductListContent = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-12 p-0">
+          {/* <div className="col-md-12 p-0">
             <div className="input-group rounded col-md-2 p-0 mt-4">
               <input
                 className="form-control"
@@ -88,8 +146,8 @@ const ProductListContent = () => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-          </div>
-          <div className="col-md-12 border mt-4" style={{ borderRadius: 4 }}>
+          </div> */}
+          {/* <div className="col-md-12 border mt-4" style={{ borderRadius: 4 }}>
             <div className="row " style={{ backgroundColor: "#F6F6F6" }}>
               <div className="col-md-8 col-8 p-3">Product Name</div>
               <div className="col-md-1 col-3 p-3">Price</div>
@@ -129,12 +187,50 @@ const ProductListContent = () => {
                   </div>
                 </div>
               ))}
+          </div> */}
+          <div className="col-md-12 p-0">
+            <div className="input-group rounded col-md-2 p-0 mt-4">
+              <input
+                className="form-control"
+                style={{ borderRadius: 40 }}
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
           </div>
+          <DataTable
+            columns={columns}
+            data={products.filter((item) => {
+              return search.toLowerCase() === ""
+                ? item
+                : item.name_product
+                    .toLowerCase()
+                    .includes(search.toLowerCase());
+              // filter((item) => {
+              // if (search === "") {
+              //   return item;
+              // } else if (
+              //   item.name.toLowerCase().includes(search.toLowerCase())
+              // ) {
+              //   return item;
+              // }
+            })}
+            pagination
+            // paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
+            subHeader
+            // subHeaderComponent={subHeaderComponentMemo}
+            selectableRows
+            persistTableHead
+          />
         </div>
       </div>
       <div
         className="col-md-1 vhhp"
         style={{ backgroundColor: "#F5F5F5" }}
+        fixedHeader
+        pagination
       ></div>
     </>
   );

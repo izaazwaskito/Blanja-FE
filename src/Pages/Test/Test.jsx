@@ -18,6 +18,7 @@ const HomeLogin = () => {
   const [search, setSearch] = useState("");
   const { sortValue, setSortValue } = useState("");
   const sortOption = ["name_product", "price_product"];
+  const [value, setValue] = useState("");
 
   useEffect(() => {
     loadUserData();
@@ -31,11 +32,14 @@ const HomeLogin = () => {
   };
 
   const handleSort = async (e) => {
-    let valuex = e.target.value;
-    setSortValue(valuex);
+    let value = e.target.value;
+    setSortValue(value);
     axios
-      .get(`http://localhost:3000/product?sortby=${valuex}&sort=asc`)
-      .then((response) => setProducts(response.data.data))
+      .get(`http://localhost:3000/product?sortby=${value}&sort=asc`)
+      .then((response) => {
+        setProducts(response.data.data);
+        setValue("");
+      })
       .catch((error) => console.log(error));
   };
 

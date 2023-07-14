@@ -24,7 +24,7 @@ const Card = () => {
   return (
     <>
       <section className="mt-5 metropolis">
-        <div className="container" style={{ maxWidth: 1632 }}>
+        <div className="container" style={{ maxWidth: 1602 }}>
           <h2 className="">Populer</h2>
           <p className="">Find cloths that are you tranding recently!</p>
           <div className="mt-5">
