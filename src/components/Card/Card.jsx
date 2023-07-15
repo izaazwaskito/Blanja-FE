@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 
 const Card = () => {
   let [products, setProducts] = useState([]);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    console.log(process.env);
     axios
       .get(`${process.env.REACT_APP_BACKEND}/product`)
       .then((response) => setProducts(response.data.data))
@@ -23,52 +21,39 @@ const Card = () => {
 
   return (
     <>
-      <section className="mt-5 metropolis">
-        <div className="container" style={{ maxWidth: 1602 }}>
+      <section className="mt-5 metropolis ">
+        <div className="container " style={{ maxWidth: 1632 }}>
           <h2 className="">Populer</h2>
           <p className="">Find cloths that are you tranding recently!</p>
           <div className="mt-5">
             <div className="row">
-              {products
-                .filter((item) => {
-                  return search.toLowerCase() === ""
-                    ? item
-                    : item.name_product
-                        .toLowerCase()
-                        .includes(search.toLowerCase());
-                })
-                .map((item, index) => (
-                  <div className="col-md-2 col-sm-6 col-6 mb-5" key={index}>
-                    <Link to={`/product/${item.id_product}`}>
-                      <div className="border rounded product">
+              {products.map((item, index) => (
+                <div className="col-md-2 col-sm-6 col-6 mb-5" key={index}>
+                  <Link to={`/product/${item.id_product}`}>
+                    <div className="border rounded product ">
+                      <img
+                        src={item.image_product}
+                        crossOrigin="anonymous"
+                        style={{ height: 185, width: 150 }}
+                        alt="product-img"
+                      />
+                      <div className="p-2">
+                        <h5 className="text-body price-card hsxsa">
+                          {item.name_product}
+                        </h5>
+                        <h5 className="text-muted price-card hsxsa">
+                          Rp. {formatRp(item.price_product)}
+                        </h5>
                         <img
-                          src={item.image_product}
-                          crossOrigin="anonymous"
-                          style={{ height: 185, width: 150 }}
+                          src={require("../../assets/img/stars.png")}
+                          alt="stars"
+                          style={{ marginLeft: 0 }}
                         />
-                        <div className="p-2">
-                          <h5
-                            className="text-body price-card"
-                            style={{ fontSize: 18 }}
-                          >
-                            {item.name_product}
-                          </h5>
-                          <h5
-                            className="text-muted price-card"
-                            style={{ fontSize: 14 }}
-                          >
-                            Rp. {formatRp(item.price_product)}
-                          </h5>
-                          <img
-                            src={require("../../assets/img/stars.png")}
-                            alt="stars"
-                            style={{ marginLeft: 0 }}
-                          />
-                        </div>
                       </div>
-                    </Link>
-                  </div>
-                ))}
+                    </div>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -8,21 +9,42 @@ const Login = () => {
     email_user: "",
     password_user: "",
   });
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+
   const handleChange = (e) => {
     setlogin({
       ...login,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleLogin = (e) => {
     e.preventDefault();
     axios
       .post(`${process.env.REACT_APP_BACKEND}/user/login`, login)
       .then((res) => {
-        alert("Succesful Login");
+        if ((res.data.statusCode = 201)) {
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully",
+          });
+        }
         console.log(login.role_user);
         localStorage.setItem("token_user", res.data.data.token_user);
         localStorage.setItem("role_user", res.data.data.role_user);
+        localStorage.setItem("email_user", res.data.data.email_user);
+        localStorage.setItem("fullname_user", res.data.data.fullname_user);
         navigate("/");
       })
       .catch((err) => {

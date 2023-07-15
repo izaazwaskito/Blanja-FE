@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [search, setSearch] = useState("");
   return (
     <>
       <header className="metropolis">
@@ -32,14 +30,13 @@ const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li className="nav-item ml-2 form-inline row justify-content-center">
+                <li className="nav-item ml-5 form-inline row justify-content-center">
                   <input
                     id="searchbox"
                     className="form-control mr-sm-2 mt-1"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                    onChange={(e) => setSearch(e.target.value)}
                   />
                   <img
                     className="searchLogo"
@@ -48,11 +45,12 @@ const Navbar = () => {
                   />
                   <img
                     id="homeFilter"
-                    className="mr-4"
+                    className="mr-4 border p-2"
                     src={require("../../assets/img/filter.png")}
                     alt="filter"
                     data-toggle="modal"
                     data-target="#exampleModal"
+                    style={{ borderRadius: 10 }}
                   />
                 </li>
               </ul>

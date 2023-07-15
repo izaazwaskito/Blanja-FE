@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SidebarCustomer = () => {
+  const getNama = localStorage.getItem("fullname_user");
   return (
     <>
       <div
@@ -19,11 +20,12 @@ const SidebarCustomer = () => {
                 <img
                   src={require("../../assets/img/user.png")}
                   style={{ width: 50, borderRadius: "50%" }}
+                  alt="user"
                 />
               </div>
               <div className="col-md-9 col-9 pl-0 pt-1">
                 <p className="mt-0 mb-0 font-weight-bold text-body">
-                  Johannes Mikael
+                  {getNama}
                 </p>
                 <i className="fa-solid fa-pen" style={{ color: "#9b9b9b" }} />
                 <span style={{ color: "#9B9B9B" }}>Ubah profile</span>
@@ -34,6 +36,7 @@ const SidebarCustomer = () => {
                 <img
                   src={require("../../assets/img/account-profile.png")}
                   style={{ width: 30, borderRadius: "50%" }}
+                  alt="profile"
                 />
               </div>
               <div
@@ -41,12 +44,12 @@ const SidebarCustomer = () => {
                 style={{ marginLeft: "-20px" }}
               >
                 <p className="mt-0 mb-3 font-weight-bold">
-                  <a
-                    href="/pages/profile-account.html"
+                  <Link
+                    to={"/customer/profile"}
                     style={{ fontSize: "1rem", color: "black" }}
                   >
                     My Account
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>
@@ -55,17 +58,20 @@ const SidebarCustomer = () => {
                 <img
                   src={require("../../assets/img/adress-profile.png")}
                   style={{ width: 30, borderRadius: "50%" }}
+                  alt="address"
                 />
               </div>
               <div className="col-md-9 col-9 pl-0 pt-1">
-                <p
-                  className="mt-0 mb-3 font-weight-bold"
-                  style={{ marginLeft: "-20px" }}
-                >
-                  <a style={{ fontSize: "1rem", color: "black" }}>
-                    Shipping Adrress
-                  </a>
-                </p>
+                <Link to={"/customer/address"}>
+                  <p
+                    className="mt-0 mb-3 font-weight-bold"
+                    style={{ marginLeft: "-20px" }}
+                  >
+                    <p style={{ fontSize: "1rem", color: "black" }}>
+                      Shipping Adrress
+                    </p>
+                  </p>
+                </Link>
               </div>
             </div>
             <div className="row mt-2">
@@ -73,20 +79,23 @@ const SidebarCustomer = () => {
                 <img
                   src={require("../../assets/img/myorder-profile.png")}
                   style={{ width: 30, borderRadius: "50%" }}
+                  alt="order"
                 />
               </div>
               <div className="col-md-9 col-9 pl-0 pt-1">
-                <p
-                  className="mt-0 mb-0 font-weight-bold"
-                  style={{ marginLeft: "-20px" }}
-                >
-                  <a
-                    href="/pages/profile-order.html"
-                    style={{ fontSize: "1rem", color: "black" }}
+                <Link to={"/customer/order"}>
+                  <p
+                    className="mt-0 mb-0 font-weight-bold"
+                    style={{ marginLeft: "-20px" }}
                   >
-                    My Order
-                  </a>
-                </p>
+                    <a
+                      href="/pages/profile-order.html"
+                      style={{ fontSize: "1rem", color: "black" }}
+                    >
+                      My Order
+                    </a>
+                  </p>
+                </Link>
               </div>
             </div>
           </div>

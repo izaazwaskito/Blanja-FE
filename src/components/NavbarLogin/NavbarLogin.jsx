@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavbarLogin = () => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if (!localStorage.getItem("token_user")) {
@@ -14,8 +13,8 @@ const NavbarLogin = () => {
     <>
       <header>
         <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light pb-3">
-          <div className="container metropolis" style={{ maxWidth: 1610 }}>
-            <a href="./index.html">
+          <div className="container metropolis" style={{ maxWidth: 1632 }}>
+            <Link to={"/home"}>
               <img
                 src={require("../../assets/img/logo.png")}
                 alt="logo"
@@ -25,7 +24,7 @@ const NavbarLogin = () => {
                   marginRight: "auto",
                 }}
               />
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -64,13 +63,13 @@ const NavbarLogin = () => {
                 </li>
               </ul>
               <form className="form-inline my-2 my-lg-0">
-                <a href="/pages/mybag.html">
+                <Link to={"/bag"}>
                   <img
                     style={{ marginRight: 40 }}
                     src={require("../../assets/img/cart.png")}
                     alt="cart"
                   />
-                </a>
+                </Link>
                 <img
                   style={{ marginRight: 40 }}
                   src={require("../../assets/img/bell.png")}
@@ -83,14 +82,14 @@ const NavbarLogin = () => {
                     alt="mail"
                   />
                 </a>
-                <a href="/pages/profile-account.html">
+                <Link to={"/customer/profile"}>
                   <img
                     className="mr-4"
                     src={require("../../assets/img/user.png")}
                     alt="cart"
                     style={{ borderRadius: "50%", width: 30 }}
                   />
-                </a>
+                </Link>
               </form>
             </div>
           </div>

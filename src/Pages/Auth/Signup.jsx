@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -21,7 +22,16 @@ const Signup = () => {
     axios
       .post(`${process.env.REACT_APP_BACKEND}/user/register`, data)
       .then((res) => {
-        alert("succesful register");
+        if ((res.data.statusCode = 201)) {
+          Swal.fire({
+            title: "Account Created",
+            text: "New Account Created",
+            icon: "success",
+          }).then(function () {
+            // Redirect the user
+            window.location.href = "/login";
+          });
+        }
         navigate("/login");
       })
       .catch((err) => {
@@ -58,7 +68,7 @@ const Signup = () => {
                   onChange={handleChange}
                 >
                   <label
-                    className="btn btn-secondary active"
+                    className="btn btn-secondary "
                     style={{
                       paddingLeft: 26,
                       paddingRight: 26,

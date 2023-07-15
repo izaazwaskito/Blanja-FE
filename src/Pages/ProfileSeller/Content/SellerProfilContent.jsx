@@ -1,6 +1,8 @@
 import React from "react";
 
 const SellerProfilContent = () => {
+  const getNama = localStorage.getItem("fullname_user");
+  const getEmail = localStorage.getItem("email_user");
   return (
     <>
       <div
@@ -38,8 +40,7 @@ const SellerProfilContent = () => {
                         style={{ height: 48 }}
                         aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-lg"
-                        placeholder="Izaaz Waskito Widyarto
-                                              "
+                        placeholder={getNama}
                       />
                     </div>
                   </div>
@@ -57,7 +58,7 @@ const SellerProfilContent = () => {
                         style={{ height: 48 }}
                         aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-lg"
-                        placeholder="izaaz.waskito@gmail.com"
+                        placeholder={getEmail}
                       />
                     </div>
                   </div>
@@ -122,6 +123,7 @@ const SellerProfilContent = () => {
                     <img
                       src={require("../../../assets/img/user.png")}
                       style={{ width: 160, borderRadius: "50%" }}
+                      alt=""
                     />
                   </div>
                   <div className="row">

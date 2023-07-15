@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SidebarSeller = () => {
+  const getNama = localStorage.getItem("fullname_user");
   return (
     <>
       <div
@@ -24,7 +25,7 @@ const SidebarSeller = () => {
               </div>
               <div className="col-md-9 col-9 pl-0 pt-1">
                 <p className="mt-0 mb-0 font-weight-bold text-body">
-                  Johannes Mikael
+                  {getNama}
                 </p>
                 <i className="fa-solid fa-pen" style={{ color: "#9b9b9b" }} />
                 <span style={{ color: "#9B9B9B" }}>Ubah profile</span>
@@ -68,15 +69,17 @@ const SidebarSeller = () => {
                     <div className="row mt-2">
                       <div className="col-md-12 col-12 pl-0 pt-1">
                         <p className="mt-0 mb-0 font-weight-bold">
-                          <a
-                            href="/pages/profile-order.html"
-                            style={{
-                              fontSize: "1rem",
-                              color: "#9b9b9b",
-                            }}
-                          >
-                            Store profile
-                          </a>
+                          <Link to={"/seller/profile"}>
+                            <a
+                              href="/pages/profile-order.html"
+                              style={{
+                                fontSize: "1rem",
+                                color: "#000000",
+                              }}
+                            >
+                              Store profile
+                            </a>
+                          </Link>
                         </p>
                       </div>
                     </div>
@@ -122,28 +125,32 @@ const SidebarSeller = () => {
                     <div className="row mt-2">
                       <div className="col-md-12 col-12 pl-0 pt-1">
                         <p className="mt-0 mb-0 font-weight-bold">
-                          <a
-                            href="/pages/profile-order.html"
-                            style={{
-                              fontSize: "1rem",
-                              color: "#9b9b9b",
-                            }}
-                          >
-                            My Product
-                          </a>
+                          <Link to={"/seller/product"}>
+                            <a
+                              href="/pages/profile-order.html"
+                              style={{
+                                fontSize: "1rem",
+                                color: "#000000",
+                              }}
+                            >
+                              My Product
+                            </a>
+                          </Link>
                         </p>
                       </div>
                       <div className="col-md-12 col-12 pl-0 pt-1">
                         <p className="mt-0 mb-0 font-weight-bold">
-                          <a
-                            href="/pages/profile-order.html"
-                            style={{
-                              fontSize: "1rem",
-                              color: "#000000",
-                            }}
-                          >
-                            Selling Product
-                          </a>
+                          <Link to={"/seller/create"}>
+                            <a
+                              href="/pages/profile-order.html"
+                              style={{
+                                fontSize: "1rem",
+                                color: "#000000",
+                              }}
+                            >
+                              Selling Product
+                            </a>
+                          </Link>
                         </p>
                       </div>
                     </div>
