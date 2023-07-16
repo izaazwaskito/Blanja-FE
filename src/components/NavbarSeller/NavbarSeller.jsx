@@ -1,7 +1,53 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
 
 const NavbarSeller = () => {
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === "Escape") {
+      setOpen(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
+
+  const getNama = localStorage.getItem("fullname_user");
+
+  const Logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
   return (
     <>
       <header>
@@ -78,14 +124,64 @@ const NavbarSeller = () => {
                     alt="mail"
                   />
                 </a>
-                <Link to={"/seller/profile"}>
-                  <img
-                    className="mr-4"
-                    src={require("../../assets/img/user.png")}
-                    alt="profil"
-                    style={{ borderRadius: "50%", width: 30 }}
-                  />
-                </Link>
+
+                <img
+                  className="mr-4"
+                  src={require("../../assets/img/user.png")}
+                  alt="profil"
+                  style={{ borderRadius: "50%", width: 30 }}
+                  onClick={handleToggle}
+                  ref={anchorRef}
+                  id="composition-button"
+                  aria-controls={open ? "composition-menu" : undefined}
+                  aria-expanded={open ? "true" : undefined}
+                  aria-haspopup="true"
+                />
+                <div>
+                  <Popper
+                    open={open}
+                    anchorEl={anchorRef.current}
+                    role={undefined}
+                    placement="bottom-start"
+                    transition
+                    disablePortal
+                  >
+                    {({ TransitionProps, placement }) => (
+                      <Grow
+                        {...TransitionProps}
+                        style={{
+                          transformOrigin:
+                            placement === "bottom-start"
+                              ? "left top"
+                              : "left bottom",
+                        }}
+                      >
+                        <Paper>
+                          <ClickAwayListener onClickAway={handleClose}>
+                            <MenuList
+                              autoFocusItem={open}
+                              id="composition-menu"
+                              aria-labelledby="composition-button"
+                              onKeyDown={handleListKeyDown}
+                            >
+                              <MenuItem>Hi! {getNama}</MenuItem>
+
+                              <Link
+                                to={"/seller/profile"}
+                                style={{ color: "black" }}
+                              >
+                                <MenuItem onClick={handleClose}>
+                                  My Account
+                                </MenuItem>
+                              </Link>
+                              <MenuItem onClick={Logout}>Logout</MenuItem>
+                            </MenuList>
+                          </ClickAwayListener>
+                        </Paper>
+                      </Grow>
+                    )}
+                  </Popper>
+                </div>
               </form>
             </div>
           </div>

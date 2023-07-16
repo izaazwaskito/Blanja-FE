@@ -105,10 +105,10 @@ const ProductListContent = () => {
         style={{ backgroundColor: "#F5F5F5", marginLeft: "right" }}
       >
         <div
-          className="col-md-12 border container-fluid vhhy"
+          className="col-md-12 border container-fluid vhhyy"
           style={{
             marginTop: 124,
-            backgroundColor: "#FFF",
+            backgroundColor: "#fff",
             borderRadius: 4,
             border: "1px solid #9B9B9B",
           }}
