@@ -86,7 +86,7 @@ const ProductListContent = () => {
     },
   ];
   const [products, setProducts] = useState([]);
-  const endpoint = "http://localhost:3000/product";
+  const endpoint = `${process.env.REACT_APP_BACKEND}/product`;
   const getData = async () => {
     await axios.get(endpoint).then((response) => {
       const data = response.data.data;

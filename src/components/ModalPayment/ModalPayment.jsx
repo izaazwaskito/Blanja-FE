@@ -5,7 +5,7 @@ const ModalPayment = () => {
   let [order, setOrder] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/order")
+      .get(`${process.env.REACT_APP_BACKEND}/order`)
       .then((response) => setOrder(response.data.data))
       .catch((error) => console.log(error));
   }, []);

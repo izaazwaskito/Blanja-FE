@@ -20,7 +20,7 @@ const ModalDelete = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .delete("http://localhost:3000/product/" + id_product)
+      .delete(`${process.env.REACT_APP_BACKEND}product/` + id_product)
       .then((response) => {
         handleClose();
         Swal.fire("Delete Success!", "", "success");
