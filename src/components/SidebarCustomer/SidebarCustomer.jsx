@@ -7,7 +7,7 @@ const SidebarCustomer = () => {
   useEffect(() => {
     const getCustomer = localStorage.getItem("id_user");
     axios
-      .get(`http://localhost:7474/user/${getCustomer}`)
+      .get(`${process.env.REACT_APP_BACKEND}/user/${getCustomer}`)
       .then((response) => setData(response.data.data[0]))
       .catch((error) => console.log(error));
   }, []);

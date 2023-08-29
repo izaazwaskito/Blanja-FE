@@ -26,7 +26,7 @@ const HomeLogin = () => {
 
   const loadUserData = async () => {
     return await axios
-      .get(`http://localhost:3000/product`)
+      .get(`${process.env.REACT_APP_BACKEND}/product`)
       .then((response) => setProducts(response.data.data))
       .catch((error) => console.log(error));
   };
@@ -35,7 +35,7 @@ const HomeLogin = () => {
     let value = e.target.value;
     setSortValue(value);
     axios
-      .get(`http://localhost:3000/product?sortby=${value}&sort=asc`)
+      .get(`${process.env.REACT_APP_BACKEND}/product?sortby=${value}&sort=asc`)
       .then((response) => {
         setProducts(response.data.data);
         setValue("");

@@ -20,7 +20,7 @@ const SellerProfilContent = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     await axios
-      .put(`http://localhost:7474/seller/update/${getSeller}`, data)
+      .put(`${process.env.REACT_APP_BACKEND}/seller/update/${getSeller}`, data)
       .then((response) => {
         setData(response);
         window.location.reload();
@@ -31,7 +31,7 @@ const SellerProfilContent = () => {
   useEffect(() => {
     const getSeller = localStorage.getItem("id_seller");
     axios
-      .get(`http://localhost:7474/seller/${getSeller}`)
+      .get(`${process.env.REACT_APP_BACKEND}/seller/${getSeller}`)
       .then((response) => setData(response.data.data[0]))
       .catch((error) => console.log(error));
   }, []);

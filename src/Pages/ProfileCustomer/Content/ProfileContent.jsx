@@ -12,7 +12,7 @@ const ProfileContent = () => {
   useEffect(() => {
     const getCustomer = localStorage.getItem("id_user");
     axios
-      .get(`http://localhost:7474/user/${getCustomer}`)
+      .get(`${process.env.REACT_APP_BACKEND}/user/${getCustomer}`)
       .then((response) => setData(response.data.data[0]))
       .catch((error) => console.log(error));
   }, []);
@@ -21,7 +21,7 @@ const ProfileContent = () => {
     e.preventDefault();
     const getCustomer = localStorage.getItem("id_user");
     await axios
-      .put(`http://localhost:7474/user/update/${getCustomer}`, data)
+      .put(`${process.env.REACT_APP_BACKEND}/user/update/${getCustomer}`, data)
       .then((response) => {
         setData(response);
         window.location.reload();
