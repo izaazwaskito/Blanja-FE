@@ -179,7 +179,7 @@ const ProductCreateContent = () => {
               <h4 className="font-weight-bold pt-2">Descriptions</h4>
             </div>
             <div className=" col-md-12 mt-3 p-0 mb-4">
-              <input
+              <textarea
                 type="text"
                 className="form-control"
                 style={{ height: 316 }}

@@ -606,6 +606,15 @@
     background: none;
 }
 
+.btn-sc{
+  background-color: #DB3022;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #5ec518;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;
@@ -695,4 +704,8 @@
 .hsxsa{
   font-size: 11px;
 }
+}
+
+.btnsc{
+  background-color: #DB3022;
 }

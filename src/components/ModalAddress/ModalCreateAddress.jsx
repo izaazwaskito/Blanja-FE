@@ -1,15 +1,18 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const ModalCreateAddress = () => {
-  let [address, setAddress] = useState({
+  const getId = localStorage.getItem("id_user");
+
+  const [address, setAddress] = useState({
     name_address: "",
     street_address: "",
     phone_address: "",
     postal_address: "",
     city_address: "",
     place_address: "",
+    id_user: getId,
   });
 
   let handleChange = (e) => {
@@ -24,7 +27,6 @@ const ModalCreateAddress = () => {
     axios
       .post(`${process.env.REACT_APP_BACKEND}/address`, address)
       .then((res) => {
-        alert("succesful register");
         Swal.fire({
           title: "New Addres Added",
           text: "New address have been added",
@@ -167,6 +169,12 @@ const ModalCreateAddress = () => {
                   </div>
                   <div className="col-md-1" />
                 </div>
+                <input
+                  type="hidden"
+                  name="id_user"
+                  value={getId}
+                  onChange={handleChange}
+                />
               </div>
               <div className="modal-footer">
                 <button

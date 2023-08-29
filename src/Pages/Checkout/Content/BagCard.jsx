@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 const BagCard = () => {
   let [order, setOrder] = useState([]);
   useEffect(() => {
+    const getUserId = localStorage.getItem("id_user");
     axios
-      .get(`${process.env.REACT_APP_BACKEND}/order`)
+      .get(`${process.env.REACT_APP_BACKEND}/order/${getUserId}`)
       .then((response) => setOrder(response.data.data))
       .catch((error) => console.log(error));
   }, []);

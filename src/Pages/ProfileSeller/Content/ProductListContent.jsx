@@ -30,7 +30,7 @@ const ProductListContent = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete("http://localhost:3000/product/" + id_product);
+        axios.delete("http://localhost:7474/product/" + id_product);
         Swal.fire("Deleted!", "", "success");
         setTimeout(function () {
           window.location.reload(1);

@@ -36,7 +36,7 @@ const ModalUpdateAddress = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`${process.env.REACT_APP_BACKEND}address/` + id_address, address)
+      .put(`${process.env.REACT_APP_BACKEND}/address/` + id_address, address)
       .then((response) => {
         setAddresss(response.data);
         handleClose();

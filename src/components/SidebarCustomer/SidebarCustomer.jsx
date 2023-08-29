@@ -1,8 +1,16 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const SidebarCustomer = () => {
-  const getNama = localStorage.getItem("fullname_user");
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const getCustomer = localStorage.getItem("id_user");
+    axios
+      .get(`http://localhost:7474/user/${getCustomer}`)
+      .then((response) => setData(response.data.data[0]))
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <>
       <div
@@ -25,7 +33,7 @@ const SidebarCustomer = () => {
               </div>
               <div className="col-md-9 col-9 pl-0 pt-1">
                 <p className="mt-0 mb-0 font-weight-bold text-body">
-                  {getNama}
+                  {data.fullname_user}
                 </p>
                 <i className="fa-solid fa-pen" style={{ color: "#9b9b9b" }} />
                 <span style={{ color: "#9B9B9B" }}>Ubah profile</span>

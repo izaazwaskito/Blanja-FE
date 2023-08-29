@@ -3,7 +3,7 @@ import React from "react";
 const Quantity = () => {
   return (
     <>
-      <div style={{ display: "flex" }} className="metropolis">
+      {/* <div style={{ display: "flex" }} className="metropolis">
         <div style={{ marginRight: 40 }}>
           <p
             style={{
@@ -60,7 +60,7 @@ const Quantity = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

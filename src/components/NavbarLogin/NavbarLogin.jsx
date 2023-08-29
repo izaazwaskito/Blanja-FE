@@ -45,6 +45,8 @@ const NavbarLogin = () => {
 
   const getNama = localStorage.getItem("fullname_user");
 
+  const getSeller = localStorage.getItem("id_seller");
+
   const Logout = () => {
     localStorage.clear();
     window.location.reload();
@@ -65,6 +67,7 @@ const NavbarLogin = () => {
                 }}
               />
             </Link>
+
             <button
               className="navbar-toggler"
               type="button"
@@ -161,10 +164,12 @@ const NavbarLogin = () => {
                               aria-labelledby="composition-button"
                               onKeyDown={handleListKeyDown}
                             >
-                              <MenuItem>Hi! {getNama}</MenuItem>
-
                               <Link
-                                to={"/customer/profile"}
+                                to={
+                                  getSeller
+                                    ? "/seller/profile"
+                                    : "/customer/profile"
+                                }
                                 style={{ color: "black" }}
                               >
                                 <MenuItem onClick={handleClose}>

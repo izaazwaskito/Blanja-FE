@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 const ModalPayment = () => {
   let [order, setOrder] = useState([]);
   useEffect(() => {
+    const getUserId = localStorage.getItem("id_user");
     axios
-      .get(`${process.env.REACT_APP_BACKEND}/order`)
+      .get(`${process.env.REACT_APP_BACKEND}/order/${getUserId}`)
       .then((response) => setOrder(response.data.data))
       .catch((error) => console.log(error));
   }, []);
@@ -148,7 +149,7 @@ const ModalPayment = () => {
               </div>
             </div>
             <div className="row">
-              <div className="col-md-9 col-6">
+              <div className="col-md-6 col-6">
                 <p
                   style={{
                     color: "#9B9B9B",
@@ -158,7 +159,7 @@ const ModalPayment = () => {
                   Delivery
                 </p>
               </div>
-              <div className="col-md-3 col-6">
+              <div className="col-md-6 col-6">
                 <p
                   style={{
                     color: "#000000",

@@ -95,10 +95,7 @@ const DetailPage = () => {
               </div>
               <div className="descirpiton">
                 <h3 className="fw-bold fs-4 mt-5">Description</h3>
-                <p className="text-justify">
-                  {products.description_product}
-                  <br />
-                </p>
+                <textarea>{products.description_product}</textarea>
               </div>
             </div>
           </section>
@@ -181,10 +178,7 @@ const DetailPage = () => {
               </div>
               <div className="descirpiton">
                 <h3 className="fw-bold fs-4 mt-5">Description</h3>
-                <p className="text-justify">
-                  {products.description_product}
-                  <br />
-                </p>
+                <p>{products.description_product}</p>
               </div>
             </div>
           </section>

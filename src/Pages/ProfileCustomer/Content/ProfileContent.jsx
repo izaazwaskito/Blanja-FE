@@ -1,8 +1,33 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const ProfileContent = () => {
-  const getNama = localStorage.getItem("fullname_user");
-  const getEmail = localStorage.getItem("email_user");
+  const [data, setData] = useState([]);
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+  useEffect(() => {
+    const getCustomer = localStorage.getItem("id_user");
+    axios
+      .get(`http://localhost:7474/user/${getCustomer}`)
+      .then((response) => setData(response.data.data[0]))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const getCustomer = localStorage.getItem("id_user");
+    await axios
+      .put(`http://localhost:7474/user/update/${getCustomer}`, data)
+      .then((response) => {
+        setData(response);
+        window.location.reload();
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <>
       <>
@@ -27,160 +52,168 @@ const ProfileContent = () => {
               <div className="row">
                 <div className="col-md-8 ">
                   <div className="col-md-12 mt-5">
-                    <div className="row">
-                      <div
-                        className="col-md-3 col-3  text-right my-auto mb-3"
-                        style={{ color: "#9B9B9B" }}
-                      >
-                        Name
+                    <form onSubmit={handleUpdate}>
+                      <div className="row">
+                        <div
+                          className="col-md-3 col-3  text-right my-auto mb-3"
+                          style={{ color: "#9B9B9B" }}
+                        >
+                          Name
+                        </div>
+                        <div className="col-md-8 col-9">
+                          <input
+                            type="text"
+                            className="form-control"
+                            style={{ height: 48 }}
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-lg"
+                            name="fullname_user"
+                            value={data.fullname_user}
+                            onChange={handleChange}
+                          />
+                        </div>
                       </div>
-                      <div className="col-md-8 col-9">
-                        <input
-                          type="text"
-                          className="form-control"
-                          style={{ height: 48 }}
-                          aria-label="Sizing example input"
-                          aria-describedby="inputGroup-sizing-lg"
-                          placeholder={getNama}
-                        />
+                      <div className="row mt-4">
+                        <div
+                          className="col-md-3 col-3 text-right my-auto mb-3"
+                          style={{ color: "#9B9B9B" }}
+                        >
+                          Email
+                        </div>
+                        <div className="col-md-8 col-9">
+                          <input
+                            type="text"
+                            className="form-control"
+                            style={{ height: 48 }}
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-lg"
+                            name="email_user"
+                            value={data.email_user}
+                            onChange={handleChange}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="row mt-4">
-                      <div
-                        className="col-md-3 col-3 text-right my-auto mb-3"
-                        style={{ color: "#9B9B9B" }}
-                      >
-                        Email
+                      <div className="row mt-4">
+                        <div
+                          className="col-md-3 col-3 text-right my-auto mb-3"
+                          style={{ color: "#9B9B9B" }}
+                        >
+                          Phone number
+                        </div>
+                        <div className="col-md-8 col-9">
+                          <input
+                            type="text"
+                            className="form-control"
+                            style={{ height: 48 }}
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-lg"
+                            name="role_user"
+                            value={data.role_user}
+                            onChange={handleChange}
+                          />
+                        </div>
                       </div>
-                      <div className="col-md-8 col-9">
-                        <input
-                          type="text"
-                          className="form-control"
-                          style={{ height: 48 }}
-                          aria-label="Sizing example input"
-                          aria-describedby="inputGroup-sizing-lg"
-                          placeholder={getEmail}
-                        />
-                      </div>
-                    </div>
-                    <div className="row mt-4">
-                      <div
-                        className="col-md-3 col-3 text-right my-auto mb-3"
-                        style={{ color: "#9B9B9B" }}
-                      >
-                        Phone number
-                      </div>
-                      <div className="col-md-8 col-9">
-                        <input
-                          type="text"
-                          className="form-control"
-                          style={{ height: 48 }}
-                          aria-label="Sizing example input"
-                          aria-describedby="inputGroup-sizing-lg"
-                          placeholder={"081225169016"}
-                        />
-                      </div>
-                    </div>
-                    <div className="row mt-4">
-                      <div
-                        className="col-md-3 col-3 text-right my-auto mb-3"
-                        style={{ color: "#9B9B9B" }}
-                      >
-                        Gender
-                      </div>
-                      <div className="col-md-8 col-9">
-                        <div className="row ml-1">
-                          <div className="custom-control custom-radio custom-control-inline">
-                            <input
-                              type="radio"
-                              id="customRadioInline1"
-                              name="customRadioInline1"
-                              className="custom-control-input"
-                            />
-                            <label
-                              className="custom-control-label"
-                              htmlFor="customRadioInline1"
-                              style={{ color: "#9B9B9B" }}
-                            >
-                              Male
-                            </label>
-                          </div>
-                          <div className="custom-control custom-radio custom-control-inline">
-                            <input
-                              type="radio"
-                              id="customRadioInline2"
-                              name="customRadioInline1"
-                              className="custom-control-input"
-                            />
-                            <label
-                              className="custom-control-label"
-                              htmlFor="customRadioInline2"
-                              style={{ color: "#9B9B9B" }}
-                            >
-                              Female
-                            </label>
+                      <div className="row mt-4">
+                        <div
+                          className="col-md-3 col-3 text-right my-auto mb-3"
+                          style={{ color: "#9B9B9B" }}
+                        >
+                          Gender
+                        </div>
+                        <div className="col-md-8 col-9">
+                          <div className="row ml-1">
+                            <div className="custom-control custom-radio custom-control-inline">
+                              <input
+                                type="radio"
+                                id="customRadioInline1"
+                                name="customRadioInline1"
+                                className="custom-control-input"
+                              />
+                              <label
+                                className="custom-control-label"
+                                htmlFor="customRadioInline1"
+                                style={{ color: "#9B9B9B" }}
+                              >
+                                Male
+                              </label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                              <input
+                                type="radio"
+                                id="customRadioInline2"
+                                name="customRadioInline1"
+                                className="custom-control-input"
+                              />
+                              <label
+                                className="custom-control-label"
+                                htmlFor="customRadioInline2"
+                                style={{ color: "#9B9B9B" }}
+                              >
+                                Female
+                              </label>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="row mt-4">
-                      <div
-                        className="col-md-3 col-3 text-right my-auto mb-3"
-                        style={{ color: "#9B9B9B" }}
-                      >
-                        Date of birth
-                      </div>
-                      <div
-                        className="col-md-2 col-3 text-right my-auto mb-3"
-                        style={{ color: "#9B9B9B" }}
-                      >
-                        <select
-                          className="custom-select custom-select-lg mb-3"
-                          style={{ fontSize: 14 }}
+                      <div className="row mt-4">
+                        <div
+                          className="col-md-3 col-3 text-right my-auto mb-3"
+                          style={{ color: "#9B9B9B" }}
                         >
-                          <option selected="">Day</option>
-                          <option>1</option>
-                        </select>
-                      </div>
-                      <div
-                        className="col-md-2 col-3 text-right my-auto mb-3"
-                        style={{ color: "#9B9B9B" }}
-                      >
-                        <select
-                          className="custom-select custom-select-lg mb-3"
-                          style={{ fontSize: 14 }}
+                          Date of birth
+                        </div>
+                        <div
+                          className="col-md-2 col-3 text-right my-auto mb-3"
+                          style={{ color: "#9B9B9B" }}
                         >
-                          <option selected="">Month</option>
-                          <option value={1}>Agustus</option>
-                        </select>
-                      </div>
-                      <div
-                        className="col-md-2 col-3 text-right my-auto mb-3"
-                        style={{ color: "#9B9B9B" }}
-                      >
-                        <select
-                          className="custom-select custom-select-lg mb-3"
-                          style={{ fontSize: 14 }}
+                          <select
+                            className="custom-select custom-select-lg mb-3"
+                            style={{ fontSize: 14 }}
+                          >
+                            <option selected="">Day</option>
+                            <option>1</option>
+                          </select>
+                        </div>
+                        <div
+                          className="col-md-2 col-3 text-right my-auto mb-3"
+                          style={{ color: "#9B9B9B" }}
                         >
-                          <option selected="">Year</option>
-                          <option value={1}>2000</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="row mt-4">
-                      <div
-                        className="col-md-3 text-right my-auto mb-3"
-                        style={{ color: "#9B9B9B" }}
-                      ></div>
-                      <div className="col-md-3" style={{ color: "#9B9B9B" }}>
-                        <button
-                          type="button"
-                          className="btn btn-danger rounded-pill btn-cm"
+                          <select
+                            className="custom-select custom-select-lg mb-3"
+                            style={{ fontSize: 14 }}
+                          >
+                            <option selected="">Month</option>
+                            <option value={1}>Agustus</option>
+                          </select>
+                        </div>
+                        <div
+                          className="col-md-2 col-3 text-right my-auto mb-3"
+                          style={{ color: "#9B9B9B" }}
                         >
-                          Save
-                        </button>
+                          <select
+                            className="custom-select custom-select-lg mb-3"
+                            style={{ fontSize: 14 }}
+                          >
+                            <option selected="">Year</option>
+                            <option value={1}>2000</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
+                      <div className="row mt-4">
+                        <div
+                          className="col-md-3 text-right my-auto mb-3"
+                          style={{ color: "#9B9B9B" }}
+                        ></div>
+                        <div className="col-md-3" style={{ color: "#9B9B9B" }}>
+                          <button
+                            type="submit"
+                            className="btn btn-danger rounded-pill btn-cm"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
                 <div className="col-md-4 col-12">

@@ -25,6 +25,11 @@ const Address = () => {
             >
               {item.name_address}
             </p>
+            <p
+              style={{ fontSize: "small", marginTop: "-10px", color: "black" }}
+            >
+              {item.phone_address}
+            </p>
             <p style={{ fontSize: "small", marginTop: "-10px" }}>
               {item.street_address} , {item.postal_address}
             </p>
@@ -64,7 +69,7 @@ const Address = () => {
                       type="button"
                       className="btn btn-primary btn-modal container-fluid p-3"
                       data-toggle="modal"
-                      data-target="#addressModal"
+                      data-target="#addressModal2"
                       style={{
                         backgroundColor: "transparent",
                         color: "#9B9B9B",
@@ -128,7 +133,7 @@ const Address = () => {
                 {/* Modal */}
                 <div
                   className="modal fade"
-                  id="Test"
+                  id="addressModal2"
                   tabIndex={-1}
                   aria-labelledby="TestLabel"
                   aria-hidden="true"
@@ -210,7 +215,7 @@ const Address = () => {
                           </div>
                           <div className="col-md-5">
                             <div className="form-group">
-                              <p sclass="form-font">Postal code</p>
+                              <p class="form-font">Postal code</p>
                               <input
                                 type="text"
                                 className="form-control"

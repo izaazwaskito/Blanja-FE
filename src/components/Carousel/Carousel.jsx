@@ -29,7 +29,7 @@ const Carousel = () => {
                   src={require("../../assets/img/karsten-winegeart-cZVE4GpzQLM-unsplash.jpg")}
                   alt="carousel"
                 />
-                <span className="fs-2 text-light font-weight-bold position-absolute metropolis h1 qj2s">
+                <span className="fs-2 text-light font-weight-bold position-absolute metropolis h1">
                   Ice Jacket
                 </span>
               </SwiperSlide>
@@ -42,7 +42,6 @@ const Carousel = () => {
                   Best Fashion in 2023
                 </span>
               </SwiperSlide>
-
               <SwiperSlide>
                 <img
                   src={require("../../assets/img/chris-henry-fXAa4-GHudU-unsplash.jpg")}

@@ -6,8 +6,9 @@ const AddressContent = () => {
   let [addresss, setAddresss] = useState([]);
 
   useEffect(() => {
+    const getId = localStorage.getItem("id_user");
     axios
-      .get(`${process.env.REACT_APP_BACKEND}/address`)
+      .get(`${process.env.REACT_APP_BACKEND}/address/${getId}`)
       .then((response) => setAddresss(response.data.data))
       .catch((error) => console.log(error));
   }, []);

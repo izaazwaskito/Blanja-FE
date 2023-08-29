@@ -164,8 +164,6 @@ const NavbarSeller = () => {
                               aria-labelledby="composition-button"
                               onKeyDown={handleListKeyDown}
                             >
-                              <MenuItem>Hi! {getNama}</MenuItem>
-
                               <Link
                                 to={"/seller/profile"}
                                 style={{ color: "black" }}
