@@ -5,6 +5,7 @@ import createProductAction from "../../../config/redux/actions/createProductActi
 
 const ProductCreateContent = () => {
   const dispatch = useDispatch();
+  const getSellerID = localStorage.getItem("id_seller");
   let [photo, setPhoto] = useState(null);
   let [product, setProduct] = useState({
     name_product: "",
@@ -12,6 +13,7 @@ const ProductCreateContent = () => {
     stock_product: "",
     price_product: "",
     description_product: "",
+    id_seller: getSellerID,
   });
 
   let handleUpload = (e) => {
@@ -27,6 +29,8 @@ const ProductCreateContent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(product);
+    console.log(product);
     dispatch(createProductAction(product, photo));
   };
 
@@ -191,6 +195,12 @@ const ProductCreateContent = () => {
                 placeholder=""
               />
             </div>
+            <input
+              type="hidden"
+              value={getSellerID}
+              name="id_seller"
+              onChange={handleChange}
+            />
           </div>
           <div className="col-md-12 mb-4 text-right" style={{ marginTop: 30 }}>
             <button

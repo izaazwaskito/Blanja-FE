@@ -95,7 +95,7 @@ const DetailPage = () => {
               </div>
               <div className="descirpiton">
                 <h3 className="fw-bold fs-4 mt-5">Description</h3>
-                <textarea>{products.description_product}</textarea>
+                <p>{products.description_product}</p>
               </div>
             </div>
           </section>
