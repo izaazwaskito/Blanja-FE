@@ -9,6 +9,7 @@ import DataTable from "react-data-table-component";
 
 const ProductListContent = () => {
   // const dispatch = useDispatch();
+  const getSeller = localStorage.getItem("id_seller");
   const [search, setSearch] = useState("");
   // const { product } = useSelector((state) => state.product);
   // useEffect(() => {
@@ -85,8 +86,9 @@ const ProductListContent = () => {
       sortable: true,
     },
   ];
+
   const [products, setProducts] = useState([]);
-  const endpoint = `${process.env.REACT_APP_BACKEND}/product`;
+  const endpoint = `${process.env.REACT_APP_BACKEND}/product/profile/${getSeller}`;
   const getData = async () => {
     await axios.get(endpoint).then((response) => {
       const data = response.data.data;

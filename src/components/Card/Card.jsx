@@ -34,7 +34,7 @@ const Card = () => {
                       <img
                         src={item.image_product}
                         crossOrigin="anonymous"
-                        style={{ height: 185, width: 150 }}
+                        style={{ height: 185, width: 200, objectFit: "cover" }}
                         alt="product-img"
                       />
                       <div className="p-2">

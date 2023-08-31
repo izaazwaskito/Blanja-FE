@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 const Button = () => {
   const { id } = useParams();
   const getUserId = localStorage.getItem("id_user");
+  const getToken = localStorage.getItem("token_user");
   const [data, setData] = useState({
     id_product: id,
     quantity_order: "",
@@ -23,7 +24,7 @@ const Button = () => {
     toast: true,
     position: "top-end",
     showConfirmButton: false,
-    timer: 3000,
+    timer: 2000,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -49,7 +50,16 @@ const Button = () => {
 
   return (
     <>
-      <form onSubmit={handleCreateOrder}>
+      <form
+        onSubmit={
+          !getToken
+            ? Toast.fire({
+                title: "You need to log in to use this feature.",
+                icon: "error",
+              })
+            : handleCreateOrder
+        }
+      >
         <div style={{ display: "flex" }} className="metropolis">
           <div style={{ marginRight: 40 }}>
             <p
