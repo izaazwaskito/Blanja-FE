@@ -13,7 +13,6 @@
   </p>
 </p>
 
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -47,7 +46,7 @@ With all the features and security provided, Blanja is expected to provide a saf
 This is an example of how to list things you need to use the software and how to install them.
 
 - [Node.Js](https://nodejs.org/en/download/)
-- [Bootstrap Css](https://getbootstrap.com/)
+- [Bootstrap](https://getbootstrap.com/)
 - [React JS](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 
@@ -127,7 +126,6 @@ REACT_APP_BACKEND = [BACKEND_URL]
     <td><img width="350px" src="https://github.com/izaazwaskito/Blanja-FE/assets/116268166/81f546da-4db7-42ac-bae1-a1db4e190df1g"  border="0" border="0" alt="3" /> </td>
     <td><img width="350px" src="https://github.com/izaazwaskito/Blanja-FE/assets/116268166/c62dc85d-c6b5-43e8-b34b-1c4f35b4128d"  border="0" border="0" alt="4" /></td>
   </tr>
-
 
   <tr>
     <td>Select Payment</td>
