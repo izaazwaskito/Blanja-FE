@@ -52,7 +52,8 @@ const Signup = () => {
       .then((res) => {
         if (res.data.statusCode === 201) {
           Toast.fire({
-            title: "Account Created",
+            title:
+              "Congratulations, your account has been created successfully!",
             icon: "success",
           }).then(function () {
             // Redirect the user
@@ -60,7 +61,7 @@ const Signup = () => {
           });
         } else {
           Toast.fire({
-            title: "Account Created Error",
+            title: "Sorry, this email is already registered.",
             icon: "error",
           }).then(function () {
             // Redirect the user
@@ -81,7 +82,8 @@ const Signup = () => {
       .then((res) => {
         if (res.data.statusCode === 201) {
           Toast.fire({
-            title: "Account Created",
+            title:
+              "Congratulations, your account has been created successfully!",
             icon: "success",
           }).then(function () {
             // Redirect the user
@@ -89,7 +91,7 @@ const Signup = () => {
           });
         } else {
           Toast.fire({
-            title: "Account Created Error",
+            title: "Sorry, this email is already registered.",
             icon: "error",
           }).then(function () {
             // Redirect the user
@@ -305,7 +307,7 @@ const Signup = () => {
               <div className="form-group">
                 <label htmlFor="formGroupExampleInput2" />
                 <input
-                  type="text"
+                  type="password"
                   className="form-control"
                   id="formGroupExampleInput2"
                   placeholder="Password"
@@ -391,7 +393,7 @@ const Signup = () => {
               <div className="form-group">
                 <label htmlFor="formGroupExampleInput2" />
                 <input
-                  type="text"
+                  type="password"
                   className="form-control"
                   id="formGroupExampleInput2"
                   placeholder="Password"

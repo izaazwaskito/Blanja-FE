@@ -46,7 +46,7 @@ const Signup = () => {
       .then((res) => {
         if (res.data.statusCode === 201) {
           Toast.fire({
-            title: "Login Success",
+            title: "You are now logged in.",
             icon: "success",
           }).then(function () {
             // Redirect the user
@@ -56,11 +56,11 @@ const Signup = () => {
           });
         } else {
           Toast.fire({
-            title: "Account Created Error",
+            title: "Sorry, your email or password is incorrect.",
             icon: "error",
           }).then(function () {
             // Redirect the user
-            window.location.href = "/signup";
+            window.location.href = "/login";
           });
         }
       })
@@ -76,7 +76,7 @@ const Signup = () => {
       .then((res) => {
         if (res.data.statusCode === 201) {
           Toast.fire({
-            title: "Login Success",
+            title: "You are now logged in.",
             icon: "success",
           }).then(function () {
             // Redirect the user
@@ -86,7 +86,7 @@ const Signup = () => {
           });
         } else {
           Toast.fire({
-            title: "Login Error",
+            title: "Sorry, your email or password is incorrect.",
             icon: "error",
           }).then(function () {
             // Redirect the user
@@ -290,7 +290,7 @@ const Signup = () => {
               <div className="form-group">
                 <label htmlFor="formGroupExampleInput2" />
                 <input
-                  type="text"
+                  type="password"
                   className="form-control"
                   id="formGroupExampleInput2"
                   placeholder="Password"
@@ -340,7 +340,7 @@ const Signup = () => {
               <div className="form-group">
                 <label htmlFor="formGroupExampleInput2" />
                 <input
-                  type="text"
+                  type="password"
                   className="form-control"
                   id="formGroupExampleInput2"
                   placeholder="Password"

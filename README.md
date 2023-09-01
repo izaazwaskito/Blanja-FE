@@ -45,9 +45,9 @@ With all the features and security provided, Blanja is expected to provide a saf
 
 This is an example of how to list things you need to use the software and how to install them.
 
-- [Node.Js](https://nodejs.org/en/download/)
+- [NodeJs](https://nodejs.org/en/download/)
 - [Bootstrap](https://getbootstrap.com/)
-- [React JS](https://reactjs.org/)
+- [ReactJS](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 
 ### Installation
