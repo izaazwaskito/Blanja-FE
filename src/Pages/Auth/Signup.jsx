@@ -53,7 +53,7 @@ const Signup = () => {
         if (res.data.statusCode === 201) {
           Toast.fire({
             title:
-              "Congratulations, your account has been created successfully!",
+              "Congratulations! Your account has been successfully created. Please check your email for further instructions",
             icon: "success",
           }).then(function () {
             // Redirect the user

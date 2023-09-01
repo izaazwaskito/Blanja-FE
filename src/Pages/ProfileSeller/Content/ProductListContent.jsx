@@ -16,9 +16,9 @@ const ProductListContent = () => {
   //   dispatch(getProductAction());
   // }, []);
 
-  const handleDelete = (id_product) => {
+  const handleDelete = (id_product, name_product) => {
     Swal.fire({
-      title: "Are you sure you want to delete this item?",
+      title: `Are you sure you want to delete ${name_product}?`,
       showDenyButton: true,
       confirmButtonText: "Yes",
       icon: "warning",
@@ -69,6 +69,7 @@ const ProductListContent = () => {
           stock_product={row.stock_product}
           description_product={row.description_product}
           image_product={row.image_product}
+          key={row.id_product}
         />
       ),
       sortable: true,
@@ -78,7 +79,8 @@ const ProductListContent = () => {
       cell: (row) => (
         <button
           className="btn btn-danger"
-          onClick={() => handleDelete(row.id_product)}
+          onClick={() => handleDelete(row.id_product, row.name_product)}
+          key={row.id_product}
         >
           Delete
         </button>

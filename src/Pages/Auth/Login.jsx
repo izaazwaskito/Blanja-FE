@@ -54,6 +54,12 @@ const Signup = () => {
             localStorage.setItem("id_user", res.data.data.id_user);
             window.location.href = "/";
           });
+        } else if (res.data.message === "user is unverify") {
+          Toast.fire({
+            title:
+              "Welcome to Blanja! To activate your account, click the verification link sent to your email address.",
+            icon: "error",
+          });
         } else {
           Toast.fire({
             title: "Sorry, your email or password is incorrect.",
@@ -83,6 +89,12 @@ const Signup = () => {
             localStorage.setItem("token_user", res.data.data.token_user);
             localStorage.setItem("id_seller", res.data.data.id_seller);
             window.location.href = "/";
+          });
+        } else if (res.data.message === "seller is unverify") {
+          Toast.fire({
+            title:
+              "Welcome to Blanja! To activate your account, click the verification link sent to your email address.",
+            icon: "error",
           });
         } else {
           Toast.fire({

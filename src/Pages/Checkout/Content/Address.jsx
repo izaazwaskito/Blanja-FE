@@ -1,40 +1,41 @@
 import { useEffect, useState } from "react";
 import ModalUpdateAddress from "../../../components/ModalAddress/ModalUpdateAddress";
 import axios from "axios";
+import AddressMap from "./AddressMap";
 
 const Address = () => {
   let [addresss, setAddresss] = useState([]);
 
   useEffect(() => {
+    const getId = localStorage.getItem("id_user");
     axios
-      .get(`${process.env.REACT_APP_BACKEND}/address`)
-      .then((response) => setAddresss(response.data.data))
+      .get(`${process.env.REACT_APP_BACKEND}/address/${getId}`)
+      .then((res) => {
+        setAddresss(res.data.data[0]);
+      })
       .catch((error) => console.log(error));
   }, []);
   return (
     <>
       <div className="col-md-10">
-        {addresss.map((item) => (
-          <div>
-            <p
-              style={{
-                paddingTop: 15,
-                color: "black",
-                fontWeight: "bold",
-              }}
-            >
-              {item.name_address}
-            </p>
-            <p
-              style={{ fontSize: "small", marginTop: "-10px", color: "black" }}
-            >
-              {item.phone_address}
-            </p>
-            <p style={{ fontSize: "small", marginTop: "-10px" }}>
-              {item.street_address} , {item.postal_address}
-            </p>
-          </div>
-        ))}
+        <div>
+          <p
+            style={{
+              paddingTop: 15,
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {addresss.name_address}
+          </p>
+          <p style={{ fontSize: "small", marginTop: "-10px", color: "black" }}>
+            {addresss.phone_address}
+          </p>
+          <p style={{ fontSize: "small", marginTop: "-10px" }}>
+            {addresss.street_address} , {addresss.postal_address}
+          </p>
+        </div>
+
         {/* Button trigger modal */}
 
         <button
@@ -80,56 +81,7 @@ const Address = () => {
                     </button>
                   </div>
                 </div>
-                {addresss.map((item) => (
-                  <div className="col-md-12 mt-5">
-                    <div
-                      className="row"
-                      style={{
-                        borderRadius: 4,
-                        border: "1px solid red",
-                      }}
-                    >
-                      <div className="col-md-12">
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            color: "black",
-                          }}
-                          className="mt-2 mb-1"
-                        >
-                          {item.place_address}
-                        </p>
-                        <p
-                          style={{
-                            fontWeight: "bold",
-                            color: "black",
-                          }}
-                          className="mb-0"
-                        >
-                          {item.name_address}
-                        </p>
-                        <p style={{ color: "black" }} className="mb-0">
-                          {" "}
-                          {item.phone_address}
-                        </p>
-                        <p style={{ color: "black" }} className="mb-1">
-                          {" "}
-                          {item.street_address} {item.postal_address}{" "}
-                          {item.city_address}
-                        </p>
-                        <ModalUpdateAddress
-                          id_address={item.id_address}
-                          name_address={item.name_address}
-                          place_address={item.place_address}
-                          phone_address={item.phone_address}
-                          street_address={item.street_address}
-                          postal_address={item.postal_address}
-                          city_address={item.city_address}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                <AddressMap />
                 {/* Modal */}
                 <div
                   className="modal fade"

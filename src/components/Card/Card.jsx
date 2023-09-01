@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Pagination from "../Pagination/Pagination";
 
 const Card = () => {
   let [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(6);
 
   useEffect(() => {
     axios
@@ -19,15 +22,25 @@ const Card = () => {
     return ribuan;
   };
 
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = products.slice(firstPostIndex, lastPostIndex);
+
   return (
     <>
       <section className="mt-5 metropolis ">
         <div className="container " style={{ maxWidth: 1632 }}>
           <h2 className="">Populer</h2>
           <p className="">Find cloths that are you tranding recently!</p>
-          <div className="mt-5">
+          <Pagination
+            totalPosts={products.length}
+            postsPerPage={postsPerPage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+          <div className="mt-2">
             <div className="row">
-              {products.map((item, index) => (
+              {currentPosts.map((item, index) => (
                 <div className="col-md-2 col-sm-6 col-6 mb-5" key={index}>
                   <Link to={`/product/${item.id_product}`}>
                     <div className="border rounded product ">

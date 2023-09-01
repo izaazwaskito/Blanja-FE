@@ -118,13 +118,13 @@ const NavbarLogin = () => {
                   src={require("../../assets/img/bell.png")}
                   alt="bell"
                 />
-                <a href="/pages/chatv1.html">
-                  <img
-                    style={{ marginRight: 40 }}
-                    src={require("../../assets/img/mail.png")}
-                    alt="mail"
-                  />
-                </a>
+
+                <img
+                  style={{ marginRight: 40 }}
+                  src={require("../../assets/img/mail.png")}
+                  alt="mail"
+                />
+
                 <img
                   className="mr-4"
                   src={require("../../assets/img/user.png")}
