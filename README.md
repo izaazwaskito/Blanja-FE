@@ -7,13 +7,12 @@
   <p align="center">
     <a href="https://github.com/izaazwaskito/Blanja-BE"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://blanja-fe-two.vercel.app/">View Demo</a>
+    <a href="https://blanja-fe-khaki.vercel.app/">View Demo</a>
     ·
-    <a href="https://fair-gold-underwear.cyclic.app/">Api Demo</a>
+    <a href="https://blanja-be-alpha.vercel.app/">Api Demo</a>
   </p>
 </p>
 
-<!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
 
@@ -189,6 +188,6 @@ Contributions are what make the open source community such an amazing place to b
 
 :rocket: [`Frontend Blanja`](https://github.com/izaazwaskito/Blanja-FE)
 
-:rocket: [`Demo Blanja`](https://blanja-fe-two.vercel.app/)
+:rocket: [`Demo Blanja`](https://blanja-fe-khaki.vercel.app/)
 
 Project Link: [https://github.com/izaazwaskito/Blanja-FE](https://github.com/izaazwaskito/Blanja-FE)
