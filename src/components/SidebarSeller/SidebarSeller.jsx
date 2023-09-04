@@ -26,9 +26,18 @@ const SidebarSeller = () => {
             <div className="row">
               <div className="col-md-3 col-3 ">
                 <img
-                  src={require("../../assets/img/user.png")}
+                  src={
+                    data.photo_seller === null || data.photo_seller === "null"
+                      ? require("../../assets/img/account-profile.png")
+                      : data.photo_seller
+                  }
                   alt="profil"
-                  style={{ width: 50, borderRadius: "50%" }}
+                  style={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                  }}
                 />
               </div>
               <div className="col-md-9 col-9 pl-0 pt-1">

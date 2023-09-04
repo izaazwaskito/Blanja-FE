@@ -28,6 +28,27 @@ const ProfileContent = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  let [photo, setPhoto] = useState(null);
+  let handleUpload = (e) => {
+    setPhoto(e.target.files[0]);
+  };
+  const handleUpdatePhoto = async (e) => {
+    const formData = new FormData();
+    formData.append("photo_user", photo);
+    const getCustomer = localStorage.getItem("id_user");
+    await axios
+      .put(
+        `${process.env.REACT_APP_BACKEND}/user/photo/${getCustomer}`,
+        formData
+      )
+      .then((response) => {
+        setData(response);
+        window.location.reload();
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
       <>
@@ -223,24 +244,39 @@ const ProfileContent = () => {
                     </div>
                     <div className="row">
                       <img
-                        src={require("../../../assets/img/user.png")}
-                        style={{ width: 160, borderRadius: "50%" }}
-                        alt=""
+                        src={
+                          data.photo_user === null || data.photo_user === "null"
+                            ? require("../../../assets/img/account-profile.png")
+                            : data.photo_user
+                        }
+                        style={{
+                          width: 170,
+                          height: 170,
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                        }}
+                        alt="user-img"
+                        crossOrigin="anonymous"
                       />
                     </div>
-                    <div className="row">
-                      <div className=" container text-center pt-3 ">
+
+                    <form onSubmit={handleUpdatePhoto}>
+                      <div className="row">
+                        <input
+                          type="file"
+                          onChange={handleUpload}
+                          name="photo_user"
+                          style={{ paddingLeft: 80, paddingTop: 20 }}
+                        />
                         <button
-                          type="button"
-                          className="btn border rounded-pill mb-3"
-                          style={{ width: 226, color: "#9B9B9B" }}
-                          data-toggle="modal"
-                          data-target="#addressModal"
+                          type="submit"
+                          className="btn"
+                          style={{ marginLeft: 150 }}
                         >
-                          Select image
+                          Upload
                         </button>
                       </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>

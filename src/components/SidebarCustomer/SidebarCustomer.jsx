@@ -26,8 +26,17 @@ const SidebarCustomer = () => {
             <div className="row">
               <div className="col-md-3 col-3 ">
                 <img
-                  src={require("../../assets/img/user.png")}
-                  style={{ width: 50, borderRadius: "50%" }}
+                  src={
+                    data.photo_user === null || data.photo_user === "null"
+                      ? require("../../assets/img/account-profile.png")
+                      : data.photo_user
+                  }
+                  style={{
+                    width: 50,
+                    height: 50,
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                  }}
                   alt="user"
                 />
               </div>

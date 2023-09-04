@@ -107,8 +107,13 @@ const Signup = () => {
         }
       })
       .catch((err) => {
-        console.log(err.response);
-        alert("gagal register");
+        Toast.fire({
+          title: "Sorry, your email or password is incorrect.",
+          icon: "error",
+        }).then(function () {
+          // Redirect the user
+          window.location.href = "/login";
+        });
       });
   };
   return (

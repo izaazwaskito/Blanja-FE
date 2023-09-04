@@ -52,12 +52,7 @@ const Button = () => {
     <>
       <form
         onSubmit={
-          !getToken
-            ? Toast.fire({
-                title: "You need to log in to use this feature.",
-                icon: "error",
-              })
-            : handleCreateOrder
+          !getToken || !getUserId ? console.log("error") : handleCreateOrder
         }
       >
         <div style={{ display: "flex" }} className="metropolis">
@@ -143,7 +138,7 @@ const Button = () => {
             Add Bag
           </button>
           <button
-            type="submit"
+            type={"submit"}
             className="btn btn-danger rounded-pill mr-2"
             style={{ width: 343, height: 48, backgroundColor: "#DB3022" }}
           >

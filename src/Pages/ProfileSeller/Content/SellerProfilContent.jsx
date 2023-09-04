@@ -35,6 +35,26 @@ const SellerProfilContent = () => {
       .then((response) => setData(response.data.data[0]))
       .catch((error) => console.log(error));
   }, []);
+  let [photo, setPhoto] = useState(null);
+  let handleUpload = (e) => {
+    setPhoto(e.target.files[0]);
+  };
+  const handleUpdatePhoto = async (e) => {
+    const formData = new FormData();
+    formData.append("photo_seller", photo);
+    const getCustomer = localStorage.getItem("id_seller");
+    await axios
+      .put(
+        `${process.env.REACT_APP_BACKEND}/seller/photo/${getCustomer}`,
+        formData
+      )
+      .then((res) => {
+        if (res.data.statusCode === 201) {
+          window.location.reload();
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <>
@@ -164,24 +184,39 @@ const SellerProfilContent = () => {
                   </div>
                   <div className="row">
                     <img
-                      src={require("../../../assets/img/user.png")}
-                      style={{ width: 160, borderRadius: "50%" }}
+                      src={
+                        data.photo_seller === null ||
+                        data.photo_seller === "null"
+                          ? require("../../../assets/img/account-profile.png")
+                          : data.photo_seller
+                      }
+                      style={{
+                        width: 160,
+                        height: 160,
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                      }}
                       alt=""
+                      crossOrigin="anonymous"
                     />
                   </div>
-                  <div className="row">
-                    <div className=" container text-center pt-3 ">
+                  <form onSubmit={handleUpdatePhoto}>
+                    <div className="row">
+                      <input
+                        type="file"
+                        onChange={handleUpload}
+                        name="photo_seller"
+                        style={{ paddingLeft: 80, paddingTop: 20 }}
+                      />
                       <button
-                        type="button"
-                        className="btn border rounded-pill mb-3"
-                        style={{ width: 226, color: "#9B9B9B" }}
-                        data-toggle="modal"
-                        data-target="#addressModal"
+                        type="submit"
+                        className="btn"
+                        style={{ marginLeft: 150 }}
                       >
-                        Select image
+                        Upload
                       </button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>

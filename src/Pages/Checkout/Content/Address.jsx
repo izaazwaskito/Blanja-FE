@@ -11,7 +11,11 @@ const Address = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND}/address/${getId}`)
       .then((res) => {
-        setAddresss(res.data.data[0]);
+        if (res.data.data[0]) {
+          setAddresss(res.data.data[0]);
+        } else {
+          setAddresss(res.data.data);
+        }
       })
       .catch((error) => console.log(error));
   }, []);
