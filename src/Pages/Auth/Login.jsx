@@ -52,6 +52,7 @@ const Signup = () => {
             // Redirect the user
             localStorage.setItem("token_user", res.data.data.token_user);
             localStorage.setItem("id_user", res.data.data.id_user);
+            localStorage.setItem("photo_user", res.data.data.photo_user);
             window.location.href = "/";
           });
         } else if (res.data.message === "user is unverify") {
@@ -88,6 +89,7 @@ const Signup = () => {
             // Redirect the user
             localStorage.setItem("token_user", res.data.data.token_user);
             localStorage.setItem("id_seller", res.data.data.id_seller);
+            localStorage.setItem("photo_seller", res.data.data.photo_seller);
             window.location.href = "/";
           });
         } else if (res.data.message === "seller is unverify") {

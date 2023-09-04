@@ -47,6 +47,10 @@ const NavbarLogin = () => {
 
   const getSeller = localStorage.getItem("id_seller");
 
+  const getPhotoSeller = localStorage.getItem("photo_seller");
+
+  const getPhotoUser = localStorage.getItem("photo_user");
+
   const Logout = () => {
     localStorage.clear();
     window.location.reload();
@@ -127,9 +131,14 @@ const NavbarLogin = () => {
 
                 <img
                   className="mr-4"
-                  src={require("../../assets/img/user.png")}
+                  src={getPhotoSeller ? getPhotoSeller : getPhotoUser}
                   alt="profil"
-                  style={{ borderRadius: "50%", width: 30 }}
+                  style={{
+                    borderRadius: "50%",
+                    width: 30,
+                    height: 30,
+                    objectFit: "cover",
+                  }}
                   onClick={handleToggle}
                   ref={anchorRef}
                   id="composition-button"
